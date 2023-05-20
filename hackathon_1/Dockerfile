@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN go mod download
-RUN go build -o myapp
+RUN go build -o testapp
 
-CMD ["/app/myapp"]
+CMD ["/app/testapp"]
 
