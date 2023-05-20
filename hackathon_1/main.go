@@ -40,7 +40,7 @@ func main() {
 	closeDBWithSysCall()
 
 	log.Println("Listening...")
-	if err := http.ListenAndServe(":8000", nil); err != nil {
+	if err := http.ListenAndServe(":6000", nil); err != nil {
 		log.Fatal(err)
 	}
 }
