@@ -40,22 +40,29 @@ func main() {
 	closeDBWithSysCall()
 
 	log.Println("Listening...")
-	if err := http.ListenAndServe(":6000", nil); err != nil {
+	//if err := http.ListenAndServe(":6000", nil); err != nil {
+	//	log.Fatal(err)
+	//}
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "6000" // Default port if not specified
+	}
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func initDB() *sql.DB {
-	// DB接続のための準備
-	mysqlUser := os.Getenv("MYSQL_USER")
-	mysqlPwd := os.Getenv("MYSQL_PWD")
-	mysqlHost := os.Getenv("MYSQL_HOST")
-	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+	//// DB接続のための準備
+	//mysqlUser := os.Getenv("MYSQL_USER")
+	//mysqlPwd := os.Getenv("MYSQL_PWD")
+	//mysqlHost := os.Getenv("MYSQL_HOST")
+	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
-	//mysqlUser := "root"
-	//mysqlPwd := "ramen102"
-	//mysqlHost := "34.172.193.162:3306"
-	//mysqlDatabase := "hackathon"
+	mysqlUser := "root"
+	mysqlPwd := "ramen102"
+	mysqlHost := "34.172.193.162:3306"
+	mysqlDatabase := "hackathon"
 
 	connStr := fmt.Sprintf("%s:%s@tcp(%s)/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
 
