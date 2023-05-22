@@ -47,18 +47,18 @@ func main() {
 
 func initDB() *sql.DB {
 	// DB接続のための準備
-	//mysqlUser := os.Getenv("MYSQL_USER")
-	//mysqlPwd := os.Getenv("MYSQL_PWD")
-	//mysqlHost := os.Getenv("MYSQL_HOST")
-	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+	mysqlUser := os.Getenv("MYSQL_USER")
+	mysqlPwd := os.Getenv("MYSQL_PWD")
+	mysqlHost := os.Getenv("MYSQL_HOST")
+	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
-	mysqlUser := "root"
-	mysqlPwd := "ramen102"
-	mysqlHost := "34.172.193.162:3306"
-	mysqlDatabase := "hackathon"
+	//mysqlUser := "root"
+	//mysqlPwd := "ramen102"
+	//mysqlHost := "34.172.193.162:3306"
+	//mysqlDatabase := "hackathon"
 
 	connStr := fmt.Sprintf("%s:%s@tcp(%s)/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
-	fmt.Println(connStr)
+
 	_db, err := sql.Open("mysql", connStr)
 
 	if err != nil {
